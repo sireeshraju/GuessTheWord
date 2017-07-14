@@ -1,0 +1,59 @@
+.guess {
+    margin-left: 40%;
+    margin-top: -3%;
+}
+.correctLetter>i {
+    margin-left: 80%;
+}
+
+.correctLetter {
+    position: absolute;
+    margin-left: 70%;
+}
+.incorrectLetter{
+    position: absolute;
+    margin-left: 10%;
+}
+.correctLetter>span{
+    font-size: 37px;
+    position: relative;
+    border-radius: 51%;
+    /* width: 123px; */
+    /* font-size: 32px; */
+    border: 3px solid #666;
+
+}
+.incorrectLetter>span{
+    font-size:40px;
+    position: relative;
+}
+.word{
+    position: absolute;
+    margin-left: 43%;
+    margin-top: 27px;
+    font-size: 33px;
+}
+.input>input{
+    width: 200px;
+    height: 30px;
+    font-size: 33px;
+    margin-left: 40%;
+    margin-top: 100px;
+}
+.button{
+    position: absolute;
+    margin-left: 43%;
+    font-size: 30px;
+    margin-top: 20px;
+    color:#fff;
+    background: #00BCD4;
+    border: none;
+}
+.title {
+    padding-left: 38%;
+    font-size: 50px;
+    color: #000000;
+}
+body {
+    background: #77aaff;
+}

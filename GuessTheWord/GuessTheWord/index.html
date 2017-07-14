@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess The Word</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
+
+</head>
+<body ng-app="GuessTheWordApp" ng-controller="GameController">
+
+<p class="title">Guess The Word</p>
+
+<div class="guess">
+    <input class="dial"
+           data-width="200"
+           data-min="0"
+           data-displayprevious="false"
+           value={{guesses}}
+           data-width="150"
+           data-fgColor="#ff7f7f"
+           data-skin="tron"
+           data-thickness=".5"
+           data-displayPrevious=false
+           ng-model="guesses" >
+
+</div>
+
+<div>
+    <div class="correctLetter">
+        <i class="correct-icon material-icons dp48"  style="font-size:60px;color:#009688;">mood</i>
+
+				<span class="correct"
+                      style=""
+                      ng-repeat="letter in correctLettersChosen">{{letter}}</span>
+
+    </div>
+
+    <div class="incorrectLetter">
+        <i class="incorrect-icon material-icons dp48" style="font-size:60px;color:#E91E63;">mood_bad</i>
+		 	<span class="incorrect"
+                  style="top:40px"
+                  ng-repeat="letter in incorrectLettersChosen"><del>{{letter}}</del></span>
+
+    </div>
+</div>
+
+<div class="word">{{displayWord}}</div>
+<div class="input">
+    <input type="text" name="guess" ng-model="input.letter" ng-minlength="1" ng-maxlength="1" ng-pattern="/^[A-Za-z]+$/">
+
+</div>
+<button class="button" ng-click="letterChosen()">CHECK</button>
+</body>
+<script>
+    $(function() {
+        $(".dial").knob({
+            'min':0,
+            'max':6
+        }).trigger('change');
+
+    });
+</script>
+</html>
