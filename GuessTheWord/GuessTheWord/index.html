@@ -32,12 +32,12 @@
 </div>
 
 <div>
-    <div class="correctLetter">
+    <div class="correctLetterArray">
         <i class="correct-icon material-icons dp48"  style="font-size:60px;color:#009688;">mood</i>
 
 				<span class="correct"
                       style=""
-                      ng-repeat="letter in correctLettersChosen">{{letter}}</span>
+                      ng-repeat="letter in correctLetterArray">{{letter}}</span>
 
     </div>
 
@@ -45,7 +45,7 @@
         <i class="incorrect-icon material-icons dp48" style="font-size:60px;color:#E91E63;">mood_bad</i>
 		 	<span class="incorrect"
                   style="top:40px"
-                  ng-repeat="letter in incorrectLettersChosen"><del>{{letter}}</del></span>
+                  ng-repeat="letter in wrongLetterArray"><del>{{letter}}</del></span>
 
     </div>
 </div>
