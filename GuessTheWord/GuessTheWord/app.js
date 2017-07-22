@@ -1,9 +1,8 @@
-
 var app = angular.module("GuessTheWordApp",[]);
 app.controller("GameController",['$scope','$timeout',function($scope,$timeout){
     var words=["Planet","Jupiter","Earth","Mars"];
-    $scope.incorrectLettersChosen=[];
-    $scope.correctLettersChosen=[];
+    $scope.wrongLetterArray=[];
+    $scope.correctLetterArray=[];
     var selectedWord='';
     $scope.guesses=6;
     $scope.displayWord='';
@@ -16,8 +15,8 @@ app.controller("GameController",['$scope','$timeout',function($scope,$timeout){
     }
     var newGame = function() {
 
-        $scope.incorrectLettersChosen = [];
-        $scope.correctLettersChosen=[];
+        $scope.wrongLetterArray = [];
+        $scope.correctLetterArray=[];
         $scope.guesses=6;
         $scope.displayWord="";
         selectedWord=selectRandomWord();
@@ -31,14 +30,14 @@ app.controller("GameController",['$scope','$timeout',function($scope,$timeout){
     $scope.letterChosen = function() {
         // Check if $scope.input.letter is a single letter and an alphabet and not an already chosen letter.
         // Check if its correct.
-        for(var i=0;i<$scope.correctLettersChosen.length;i++) {
-            if($scope.correctLettersChosen[i].toUpperCase()==$scope.input.letter.toUpperCase()) {
+        for(var i=0;i<$scope.correctLetterArray.length;i++) {
+            if($scope.correctLetterArray[i].toUpperCase()==$scope.input.letter.toUpperCase()) {
                 $scope.input.letter="";
                 return;
             }
         }
-        for(var i=0;i<$scope.incorrectLettersChosen.length;i++) {
-            if($scope.incorrectLettersChosen[i].toUpperCase()==$scope.input.letter.toUpperCase()) {
+        for(var i=0;i<$scope.wrongLetterArray.length;i++) {
+            if($scope.wrongLetterArray[i].toUpperCase()==$scope.input.letter.toUpperCase()) {
                 $scope.input.letter="";
                 return;
             }
@@ -58,7 +57,7 @@ app.controller("GameController",['$scope','$timeout',function($scope,$timeout){
             objhand.animate({height: '100px', opacity: '0.4'}, "fast");
             objhand.animate({width: '100px', opacity: '0.8'}, "fast");
 
-            $scope.correctLettersChosen.push($scope.input.letter.toUpperCase());
+            $scope.correctLetterArray.push($scope.input.letter.toUpperCase());
         } else {
             var objhand = $(".incorrect-icon");
             objhand.animate({height: '200px', opacity: '0.4'}, "fast");
@@ -67,7 +66,7 @@ app.controller("GameController",['$scope','$timeout',function($scope,$timeout){
             objhand.animate({width: '100px', opacity: '0.8'}, "fast");
 
             $scope.guesses--;
-            $scope.incorrectLettersChosen.push($scope.input.letter.toUpperCase());
+            $scope.wrongLetterArray.push($scope.input.letter.toUpperCase());
         }
         $timeout(function() {
             $('.dial').trigger('change');
